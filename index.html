@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ajax</title>
+
+</head>
+<body>
+
+
+用户名：<input id="username" type="text" name="">
+密码：<input id="userpass" type="password" name=""><br>
+<input id="btn" type="button" value="测试">
+<p id="pMes"></p>
+
+ <script>
+function $(id){
+    return document.getElementById(id);
+}
+
+window.onload=function(){
+    $('btn').onclick=function(){
+    let xhr=new XMLHttpRequest();
+    xhr.open('get','index.php?&username='+$('username').value+'&userpass='+$('userpass').value,true);
+
+    xhr.onreadystatechange=function(){
+        if(xhr.response.Text){
+            $('pMes').innerHTML='登录成功';
+        }else{
+            $('pMes').innerHTML='用户名或密码错误';
+        }
+    }
+
+    xhr.send();
+
+    }
+}
+
+
+
+
+
+ </script>
+  
+</body>
+</html>
